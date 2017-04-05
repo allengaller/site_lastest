@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>install django on mac | allengaller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="install on mac (bare metal)install on mac (docker)
+download &amp;amp; install docker for mac;
+
+link: https://docs.docker.com/compose/django/;
+Define the project components;
+
+create folder;
+create Dockerfi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="install django on mac">
+<meta property="og:url" content="http://yoursite.com/python/lang-python-django-install/index.html">
+<meta property="og:site_name" content="allengaller">
+<meta property="og:description" content="install on mac (bare metal)install on mac (docker)
+download &amp;amp; install docker for mac;
+
+link: https://docs.docker.com/compose/django/;
+Define the project components;
+
+create folder;
+create Dockerfi">
+<meta property="og:updated_time" content="2017-01-12T09:49:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="install django on mac">
+<meta name="twitter:description" content="install on mac (bare metal)install on mac (docker)
+download &amp;amp; install docker for mac;
+
+link: https://docs.docker.com/compose/django/;
+Define the project components;
+
+create folder;
+create Dockerfi">
+  
+    <link rel="alternate" href="/atom.xml" title="allengaller" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//ogjcp83qb.bkt.clouddn.com/css.css" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">allengaller</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">All about cloud &amp; devops</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-lang-python-django-install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <//%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      install django on mac
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="install-on-mac-bare-metal"><a href="#install-on-mac-bare-metal" class="headerlink" title="install on mac (bare metal)"></a>install on mac (bare metal)</h1><h1 id="install-on-mac-docker"><a href="#install-on-mac-docker" class="headerlink" title="install on mac (docker)"></a>install on mac (docker)</h1><ul>
+<li><p>download &amp; install docker for mac;</p>
+<ul>
+<li>link: <a href="https://docs.docker.com/compose/django/" target="_blank" rel="external">https://docs.docker.com/compose/django/</a>;</li>
+<li><p>Define the project components;</p>
+<ol>
+<li>create folder;</li>
+<li><p>create Dockerfile;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">FROM python:2.7</div><div class="line">ENV PYTHONUNBUFFERED 1</div><div class="line">RUN mkdir /code</div><div class="line">WORKDIR /code</div><div class="line">ADD requirements.txt /code/</div><div class="line">RUN pip install -r requirements.txt</div><div class="line">ADD . /code/</div></pre></td></tr></table></figure>
+</li>
+<li><p>create requirements.txt;</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Django</div><div class="line">psycopg2</div></pre></td></tr></table></figure>
+</li>
+<li><p>create docker-compose.yml</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">version: &apos;2&apos;</div><div class="line">services:</div><div class="line">  db:</div><div class="line">    image: postgres</div><div class="line">  web:</div><div class="line">    build: .</div><div class="line">    command: python manage.py runserver 0.0.0.0:8000</div><div class="line">    volumes:</div><div class="line">      - .:/code</div><div class="line">    ports:</div><div class="line">      - &quot;8000:8000&quot;</div><div class="line">    depends_on:</div><div class="line">      - db</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Create a Django project;</p>
+<ol>
+<li>goto root dir;</li>
+<li>docker-compose run web django-admin.py startproject composeexample .</li>
+<li>ls -l; sudo chown -R $USER:$USER .;</li>
+</ol>
+</li>
+<li><p>Connect the database;</p>
+<ol>
+<li><p>edit composeexample/settings.py;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">     &apos;default&apos;: &#123;</div><div class="line">         &apos;ENGINE&apos;: &apos;django.db.backends.postgresql&apos;,</div><div class="line">         &apos;NAME&apos;: &apos;postgres&apos;,</div><div class="line">         &apos;USER&apos;: &apos;postgres&apos;,</div><div class="line">         &apos;HOST&apos;: &apos;db&apos;,</div><div class="line">         &apos;PORT&apos;: 5432,</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>$ docker-compose up</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/python/lang-python-django-install/" data-id="ciypwm3bs004x21svpb3i7i4k" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/uncategorized/docker-compose-file-tmp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/docker/docker-network-core/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">docker network</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/career/">career</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cloud/">cloud</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/community/">community</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cx/">cx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iaas/">iaas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microservice/">microservice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/paas/">paas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tmp/">tmp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/architect/">architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudfoundry/">cloudfoundry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/detail/">detail</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filesystem/">filesystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openshift/">openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opensource/">opensource</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openstack/">openstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/portal/">portal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/storage/">storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swarm/">swarm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017-04-03 allengaller<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ogjcp83qb.bkt.clouddn.com/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

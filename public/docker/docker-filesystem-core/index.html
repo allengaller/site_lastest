@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>docker filesystem | allengaller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="aboutAuFS
+about
+  http://aufs.sourceforge.net/
+  layered file system
+  AuFS is a layered file system, so you can have a read only part, and a write part, and merge those together. So you could have th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker filesystem">
+<meta property="og:url" content="http://yoursite.com/docker/docker-filesystem-core/index.html">
+<meta property="og:site_name" content="allengaller">
+<meta property="og:description" content="aboutAuFS
+about
+  http://aufs.sourceforge.net/
+  layered file system
+  AuFS is a layered file system, so you can have a read only part, and a write part, and merge those together. So you could have th">
+<meta property="og:updated_time" content="2017-01-15T07:30:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker filesystem">
+<meta name="twitter:description" content="aboutAuFS
+about
+  http://aufs.sourceforge.net/
+  layered file system
+  AuFS is a layered file system, so you can have a read only part, and a write part, and merge those together. So you could have th">
+  
+    <link rel="alternate" href="/atom.xml" title="allengaller" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//ogjcp83qb.bkt.clouddn.com/css.css" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">allengaller</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">All about cloud &amp; devops</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker-filesystem-core" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <//%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker filesystem
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="about"><a href="#about" class="headerlink" title="about"></a>about</h1><h1 id="AuFS"><a href="#AuFS" class="headerlink" title="AuFS"></a>AuFS</h1><ul>
+<li><p>about</p>
+<p>  <a href="http://aufs.sourceforge.net/" target="_blank" rel="external">http://aufs.sourceforge.net/</a></p>
+<p>  layered file system</p>
+<p>  AuFS is a layered file system, so you can have a read only part, and a write part, and merge those together. So you could have the common parts of the operating system as read only, which are shared amongst all of your containers, and then give each container its own mount for writing.So let’s say you have a container image that is 1GB in size. If you wanted to use a Full VM, you would need to have 1GB times x number of VMs you want. With LXC and AuFS you can share the bulk of the 1GB and if you have 1000 containers you still might only have a little over 1GB of space for the containers OS, assuming they are all running the same OS image.</p>
+</li>
+</ul>
+<h1 id="ceph"><a href="#ceph" class="headerlink" title="ceph"></a>ceph</h1><ul>
+<li><p>about</p>
+<p>  一个 Linux PB 级分布式文件系统<br>  Ceph is a distributed object store and file system designed to provide excellent performance, reliability and scalability.</p>
+</li>
+<li><p>feature</p>
+<ul>
+<li>以时间复杂度为O(1)的方式提供消息持久化能力，即使对TB级以上数据也能保证常数时间复杂度的访问性能。</li>
+<li>高吞吐率。即使在非常廉价的商用机器上也能做到单机支持每秒100K条以上消息的传输。</li>
+<li>支持Kafka Server间的消息分区，及分布式消费，同时保证每个Partition内的消息顺序传输。</li>
+<li>同时支持离线数据处理和实时数据处理。</li>
+<li>Scale out：支持在线水平扩展。</li>
+</ul>
+</li>
+<li><p>resource</p>
+<p>  link： <a href="http://ceph.com/" target="_blank" rel="external">http://ceph.com/</a><br>  doc： <a href="http://docs.openfans.org/ceph" target="_blank" rel="external">http://docs.openfans.org/ceph</a></p>
+</li>
+<li><p>core</p>
+</li>
+<li><p>components</p>
+<p>  cluster monitors<br>  clients<br>  metadata server cluster<br>  object storage cluster</p>
+</li>
+</ul>
+<h1 id="overlayfs"><a href="#overlayfs" class="headerlink" title="overlayfs"></a>overlayfs</h1><ul>
+<li>link： <a href="https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt" target="_blank" rel="external">https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/docker/docker-filesystem-core/" data-id="ciypwm39c002b21svtsnp2crr" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/core/">core</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/filesystem/">filesystem</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/docker/docker-engine-detail/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          docker engine
+        
+      </div>
+    </a>
+  
+  
+    <a href="/docker/docker-image-detail/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">docker image</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/career/">career</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cloud/">cloud</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/community/">community</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cx/">cx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iaas/">iaas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microservice/">microservice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/paas/">paas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tmp/">tmp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/architect/">architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudfoundry/">cloudfoundry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/detail/">detail</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filesystem/">filesystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openshift/">openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opensource/">opensource</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openstack/">openstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/portal/">portal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/storage/">storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swarm/">swarm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017-04-03 allengaller<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ogjcp83qb.bkt.clouddn.com/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

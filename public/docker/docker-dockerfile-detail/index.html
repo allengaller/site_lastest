@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>dockerfile | allengaller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="about dockerfiledockerfile command
+point to a Dockerfile anywhere in your file system
+docker build -f /path/to/a/Dockerfile .
+
+specify a repository and tag at which to save the new image if the build">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dockerfile">
+<meta property="og:url" content="http://yoursite.com/docker/docker-dockerfile-detail/index.html">
+<meta property="og:site_name" content="allengaller">
+<meta property="og:description" content="about dockerfiledockerfile command
+point to a Dockerfile anywhere in your file system
+docker build -f /path/to/a/Dockerfile .
+
+specify a repository and tag at which to save the new image if the build">
+<meta property="og:updated_time" content="2017-01-13T11:46:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dockerfile">
+<meta name="twitter:description" content="about dockerfiledockerfile command
+point to a Dockerfile anywhere in your file system
+docker build -f /path/to/a/Dockerfile .
+
+specify a repository and tag at which to save the new image if the build">
+  
+    <link rel="alternate" href="/atom.xml" title="allengaller" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//ogjcp83qb.bkt.clouddn.com/css.css" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">allengaller</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">All about cloud &amp; devops</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker-dockerfile-detail" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <//%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      dockerfile
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="about-dockerfile"><a href="#about-dockerfile" class="headerlink" title="about dockerfile"></a>about dockerfile</h1><h1 id="dockerfile-command"><a href="#dockerfile-command" class="headerlink" title="dockerfile command"></a>dockerfile command</h1><ul>
+<li><p>point to a Dockerfile anywhere in your file system</p>
+<pre><code>docker build -f /path/to/a/Dockerfile .
+</code></pre></li>
+<li><p>specify a repository and tag at which to save the new image if the build succeeds</p>
+<pre><code>docker build -t shykes/myapp .
+</code></pre></li>
+</ul>
+<h1 id="dockerfile-keyword"><a href="#dockerfile-keyword" class="headerlink" title="dockerfile keyword"></a>dockerfile keyword</h1><ul>
+<li><p>FROM: base image</p>
+</li>
+<li><p>MAINTAINER</p>
+<pre><code>MAINTAINER ag &quot;allengaller@gmail.com&quot;
+</code></pre></li>
+<li><p>USER: set user</p>
+<pre><code>USER root
+</code></pre></li>
+<li><p>RUN: run system cmd</p>
+<pre><code>RUN apt-get update
+RUN [&quot;apt-get&quot;, &quot;update&quot;]
+RUN apt-get install -y nginx
+RUN touch test.txt &amp;&amp; echo &quot;abc&quot; &gt;&gt; abc.txt
+</code></pre></li>
+<li><p>EXPOSE: expose port</p>
+</li>
+<li><p>ADD</p>
+<p>  The ADD instruction copies new files, directories or remote file URLs from <src> and adds them to the filesystem of the container at the path <dest>.</dest></src></p>
+<p>  pattern: ADD <src>… <dest>; ADD [“<src>“,… “<dest>“]<br>  add folder: ADD /webapp /opt/webapp<br>  add file: ADD abc.txt /opt/<br>  add network file: ADD <a href="https://www.baidu.com/img/bd_logo1.png" target="_blank" rel="external">https://www.baidu.com/img/bd_logo1.png</a> /opt/</dest></src></dest></src></p>
+</li>
+<li><p>ENV: set env variable</p>
+<pre><code>ENV WEBAPP_PORT = 9090
+</code></pre></li>
+<li><p>WORKDIR: set working directory</p>
+<p>  The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.The WORKDIR instruction can resolve environment variables previously set using ENV. You can only use environment variables explicitly set in the Dockerfile. For example:</p>
+<pre><code>ENV DIRPATH /path
+WORKDIR $DIRPATH/$DIRNAME
+RUN pwd
+</code></pre><p>  The output of the final pwd command in this Dockerfile would be /path/$DIRNAME.It can be used multiple times in the one Dockerfile. If a relative path is provided, it will be relative to the path of the previous WORKDIR instruction. For example:</p>
+<pre><code>WORKDIR /a
+WORKDIR b
+WORKDIR c
+RUN pwd
+</code></pre><p>  The output of the final pwd command in this Dockerfile would be /a/b/c.</p>
+<pre><code>WORKDIR /opt/
+</code></pre></li>
+<li><p>ENTRYPOINT: set boot command, append parameter to boot cmd</p>
+<p>  An ENTRYPOINT allows you to configure a container that will run as an executable.For example, the following will start nginx with its default content, listening on port 80:</p>
+<pre><code>docker run -i -t --rm -p 80:80 nginx
+
+ENTRYPOINT [&quot;ls&quot;]
+ENTRYPOINT [&quot;ls&quot;]
+CMD [&quot;-l&quot;, &quot;-a&quot;]
+</code></pre></li>
+<li><p>CMD: set boot parameter</p>
+<pre><code>CMD [&quot;ls&quot;, &quot;-a&quot;, &quot;-l&quot;]
+CMD ls -l -a
+</code></pre></li>
+<li><p>VOLUME: set volume</p>
+<pre><code>VOLUME [&quot;/data&quot;, &quot;/var/www&quot;]
+</code></pre></li>
+<li><p>ONBUILD: trigger for child image</p>
+<pre><code>ONBUILD ADD . /app/src
+ONBUILD RUN echo &quot;on build excuted&quot; &gt;&gt; onbuild.txt
+</code></pre></li>
+<li><p>ARG</p>
+</li>
+<li><p>STOPSIGNAL</p>
+</li>
+</ul>
+<h1 id="best-practice-link"><a href="#best-practice-link" class="headerlink" title="best practice link"></a>best practice <a href="https://docs.docker.com/engine/articles/dockerfile_best-practices/" target="_blank" rel="external">link</a></h1><ul>
+<li><p>Containers should be ephemeral</p>
+<p>  The container produced by the image your Dockerfile defines should be as ephemeral as possible.By “ephemeral,” we mean that it can be stopped and destroyed and a new one built and put in place with an absolute minimum of set-up and configuration.</p>
+</li>
+<li><p>Use a .dockerignore file</p>
+<p>  In most cases, it’s best to put each Dockerfile in an empty directory. Then, add to that directory only the files needed for building the Dockerfile. To increase the build’s performance, you can exclude files and directories by adding a .dockerignore file to that directory as well. This file supports exclusion patterns similar to .gitignore files. For information on creating one, see the .dockerignore file.</p>
+</li>
+<li><p>Avoid installing unnecessary packages</p>
+<p>  In order to reduce complexity, dependencies, file sizes, and build times, you should avoid installing extra or unnecessary packages just because they might be “nice to have.” For example, you don’t need to include a text editor in a database image.</p>
+</li>
+<li><p>Run only one process per container</p>
+<p>  In almost all cases, you should only run a single process in a single container. Decoupling applications into multiple containers makes it much easier to scale horizontally and reuse containers. If that service depends on another service, make use of container linking.</p>
+</li>
+<li><p>Minimize the number of layers</p>
+<p>  You need to find the balance between readability (and thus long-term maintainability) of the Dockerfile and minimizing the number of layers it uses. Be strategic and cautious about the number of layers you use.</p>
+</li>
+<li><p>Sort multi-line arguments</p>
+<p>  Here’s an example from the buildpack-deps image:</p>
+<p>  RUN apt-get update &amp;&amp; apt-get install -y \</p>
+<pre><code>bzr \
+cvs \
+git \
+mercurial \
+subversion
+</code></pre></li>
+<li><p>Build cache</p>
+</li>
+</ul>
+<h1 id="dockerignore"><a href="#dockerignore" class="headerlink" title=".dockerignore"></a>.dockerignore</h1><pre><code>*/temp*
+*/*/temp*
+temp?
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/docker/docker-dockerfile-detail/" data-id="ciypwm394002121svo7zb0zb3" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/detail/">detail</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/devops/devops--portal/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          devops portal
+        
+      </div>
+    </a>
+  
+  
+    <a href="/docker/docker-dockerhub-detail/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">dockerhub</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/career/">career</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cloud/">cloud</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/community/">community</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cx/">cx</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/devops/">devops</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iaas/">iaas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microservice/">microservice</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/paas/">paas</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ruby/">ruby</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tmp/">tmp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/architect/">architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudfoundry/">cloudfoundry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/core/">core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/detail/">detail</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filesystem/">filesystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openshift/">openshift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opensource/">opensource</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openstack/">openstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/portal/">portal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/security/">security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/storage/">storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swarm/">swarm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017-04-03 allengaller<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ogjcp83qb.bkt.clouddn.com/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
