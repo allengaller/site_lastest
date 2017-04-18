@@ -4,6 +4,9 @@ categories:
 - docker
 tags:
 - core
+- k8s
 ---
 
-#  core
+# k8s core
+https://kubeup.com/
+https://quay.io

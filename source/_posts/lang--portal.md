@@ -1,8 +1,8 @@
 ---
-title: cx portal
+title: programming language portal
 categories:
-- cx
+- programming language
 tags:
 - portal
+- programming language
 ---
-

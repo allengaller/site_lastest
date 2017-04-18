@@ -1,9 +1,10 @@
 ---
-title: php portal
+title: php programming language portal
 categories:
 - php
 tags:
 - portal
+- programming language
 ---
 
 # framework
@@ -29,7 +30,3 @@ vs:http://www.danbp.org/p/node/79
 # cakephp
 https://cakephp.org/
 https://book.cakephp.org/3.0/en/index.html
-
-
-
-

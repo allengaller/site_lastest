@@ -1,9 +1,9 @@
 ---
-title: mesos core
+title: docker cloud detail
 categories:
 - docker
 tags:
-- core
+- detail
 ---
 
-#  core
+# docker cloud detail

@@ -7,4 +7,4 @@ tags:
 - openshift
 ---
 
-# 
+# openshift core

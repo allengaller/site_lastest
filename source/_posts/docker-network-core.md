@@ -1,5 +1,5 @@
 ---
-title: docker network
+title: docker network core
 categories:
 - docker
 tags:
@@ -32,7 +32,7 @@ tags:
         sudo docker inspect --format '{{.NetworkSettings}}' CID
 
 - container link
-    
+
     about: docker0 bridge; iptables
 
     --link name:alias
@@ -40,15 +40,15 @@ tags:
             sudo docker -d --name dbdata training/postgres
             sudo docker run -d -P --name web --link dbdata:db training/webapp python app.py
             sudo docker inspect web
-        
+
         Links: /dbdata:/web/db
 
         how web container use dbdata:
-            
+
             - env variable
                 sudo docker run --rm --name web2 --link dbdata:webdb training/webapp env
                 <name>_PORT_<port>_<protocol>_ADDR/PORT/PROTO
-            
+
             - /etc/hosts
 
     - ambassador
@@ -84,26 +84,3 @@ https://github.com/docker/libnetwork/blob/master/docs/design.md
 - network driver api
 
 - IPAM api
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

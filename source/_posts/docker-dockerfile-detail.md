@@ -4,6 +4,8 @@ categories:
 - docker
 tags:
 - detail
+- dockerfile
+
 ---
 
 # about dockerfile
@@ -12,11 +14,11 @@ tags:
 # dockerfile command
 
 - point to a Dockerfile anywhere in your file system
-    
+
         docker build -f /path/to/a/Dockerfile .
 
 - specify a repository and tag at which to save the new image if the build succeeds
-    
+
         docker build -t shykes/myapp .
 
 # dockerfile keyword
@@ -43,7 +45,7 @@ tags:
 - ADD
 
     The ADD instruction copies new files, directories or remote file URLs from <src> and adds them to the filesystem of the container at the path <dest>.
-    
+
     pattern: ADD <src>... <dest>; ADD ["<src>",... "<dest>"]
     add folder: ADD /webapp /opt/webapp
     add file: ADD abc.txt /opt/
@@ -54,7 +56,7 @@ tags:
         ENV WEBAPP_PORT = 9090
 
 - WORKDIR: set working directory
-    
+
     The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.The WORKDIR instruction can resolve environment variables previously set using ENV. You can only use environment variables explicitly set in the Dockerfile. For example:
 
         ENV DIRPATH /path
@@ -69,30 +71,30 @@ tags:
         RUN pwd
 
     The output of the final pwd command in this Dockerfile would be /a/b/c.
-    
+
         WORKDIR /opt/
 
 - ENTRYPOINT: set boot command, append parameter to boot cmd
-    
+
     An ENTRYPOINT allows you to configure a container that will run as an executable.For example, the following will start nginx with its default content, listening on port 80:
-            
+
         docker run -i -t --rm -p 80:80 nginx
-    
+
         ENTRYPOINT ["ls"]
         ENTRYPOINT ["ls"]
         CMD ["-l", "-a"]
 
 - CMD: set boot parameter
-    
+
         CMD ["ls", "-a", "-l"]
         CMD ls -l -a
 
 - VOLUME: set volume
-    
+
         VOLUME ["/data", "/var/www"]
 
 - ONBUILD: trigger for child image
-    
+
         ONBUILD ADD . /app/src
         ONBUILD RUN echo "on build excuted" >> onbuild.txt
 
@@ -109,7 +111,7 @@ tags:
 - Use a .dockerignore file
 
     In most cases, it’s best to put each Dockerfile in an empty directory. Then, add to that directory only the files needed for building the Dockerfile. To increase the build’s performance, you can exclude files and directories by adding a .dockerignore file to that directory as well. This file supports exclusion patterns similar to .gitignore files. For information on creating one, see the .dockerignore file.
-    
+
 - Avoid installing unnecessary packages
 
     In order to reduce complexity, dependencies, file sizes, and build times, you should avoid installing extra or unnecessary packages just because they might be “nice to have.” For example, you don’t need to include a text editor in a database image.

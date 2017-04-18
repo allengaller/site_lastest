@@ -7,4 +7,4 @@ tags:
 - openstack
 ---
 
-# core
+# openstack core

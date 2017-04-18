@@ -5,6 +5,3 @@ categories:
 tags:
 - core
 ---
-
-
-        

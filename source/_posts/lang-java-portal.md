@@ -1,9 +1,10 @@
 ---
-title: java portal
+title: java programming language portal
 categories:
-- java
+- programming language
 tags:
 - portal
+- programming language
 ---
 
 #  portal

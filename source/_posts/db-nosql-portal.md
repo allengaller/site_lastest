@@ -1,9 +1,9 @@
 ---
-title: java portal
+title: nosql portal
 categories:
-- java
+- nosql
 tags:
 - portal
 ---
 
-#  portal
+# nosql portal

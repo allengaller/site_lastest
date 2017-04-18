@@ -1,9 +1,10 @@
 ---
-title: python portal
+title: machine learning portal
 categories:
-- python
+- bigdata
 tags:
 - portal
+- machine learning
 ---
 
-# 123
+# machine learning portal

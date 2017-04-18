@@ -1,14 +1,15 @@
 ---
-title: openstack core
+title: docker swarmkit detail
 categories:
 - iaas
 tags:
-- core
-- openstack
+- detail
+- docker
+- swarmkit
 ---
 
 # about
 
 - link: https://github.com/docker/swarmkit
 
-# 
+#

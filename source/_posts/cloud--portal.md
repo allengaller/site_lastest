@@ -1,9 +1,10 @@
 ---
 title: cloud portal
 categories:
-- python
+- cloud
 tags:
 - portal
+- cloud
 ---
 
 # aws
@@ -14,7 +15,6 @@ infoq: http://2017.qconbeijing.com/tracks
 
 https://www.oschina.net/p/dubbo
 https://github.com/alibaba/dubbo
-
 
 
 ## zookeeper
@@ -68,10 +68,10 @@ resource：
     http://www.infoq.com/cn/articles/apache-kafka
     http://www.infoq.com/cn/presentations/use-apache-kafka-to-transfer-key-business-message?utm_source=infoq&utm_medium=related_content_link&utm_campaign=relatedContent_articles_clk
 
-    must read: 
+    must read:
         https://github.com/oldratlee/translations/blob/master/log-what-every-software-engineer-should-know-about-real-time-datas-unifying/README.md
         http://www.cnblogs.com/foreach-break/p/notes_about_distributed_system_and_The_log.html
-        
+
     faq：https://www.zhihu.com/question/22480085
 
 ## rabbitmq

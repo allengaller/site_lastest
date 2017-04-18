@@ -1,9 +1,10 @@
 ---
-title: js portal
+title: js programming language portal
 categories:
-- js
+- programming language
 tags:
 - portal
+- programming language
 ---
 
 # about
@@ -15,4 +16,3 @@ https://medium.com/@ZombieCodeKill/choosing-a-javascript-framework-535745d0ab90#
 
 #jquery
 http://jquery.com/
-        

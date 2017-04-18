@@ -1,9 +1,10 @@
 ---
-title: cx portal
+title: go programming language portal
 categories:
-- cx
+- programming language
 tags:
 - portal
+- programming language
 ---
 
 # about
@@ -18,4 +19,3 @@ http://golangtc.com/t/587edd57b09ecc2e18000169
 
 # doc
 http://godoc.golangtc.com/doc/effective_go.html
-

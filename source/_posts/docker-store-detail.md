@@ -1,9 +1,9 @@
 ---
-title: mesos core
+title: docker store detail
 categories:
 - docker
 tags:
-- core
+- detail
 ---
 
-#  core
+# docker store detail

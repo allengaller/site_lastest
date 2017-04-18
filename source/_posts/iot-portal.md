@@ -1,10 +1,10 @@
 ---
-title: openstack core
+title: iot portal
 categories:
-- iaas
+- iot
 tags:
-- core
-- openstack
+- portal
+- iot
 ---
 
 # core

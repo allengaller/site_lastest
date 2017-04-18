@@ -1,5 +1,5 @@
 ---
-title: docker security
+title: docker security core
 categories:
 - docker
 tags:
@@ -7,7 +7,7 @@ tags:
 - security
 ---
 
-# about
+# docker security core
 
 # cgroups
 

@@ -1,9 +1,10 @@
 ---
-title: docker yaml file
+title: docker yaml file detail
 categories:
 - docker
 tags:
 - detail
+- yaml
 ---
 
 # about
